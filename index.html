@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>영단어 테스트</title>
+
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- 제목 -->
+    <div class="title-box">
+        <h1>영단어 테스트</h1>
+        <p>파일을 선택하고 시험을 시작하세요</p>
+    </div>
+
+    <!-- 설정 카드 -->
+    <div class="event-card current" id="settingBox">
+
+        <h1>시험 설정</h1>
+
+        <p>
+            단어 파일 선택<br>
+            <select id="fileSelect"></select>
+        </p>
+
+        <p>
+            문제 수<br>
+            <select id="qCount">
+                <option value="10">10문제</option>
+                <option value="20" selected>20문제</option>
+                <option value="30">30문제</option>
+                <option value="0">전체</option>
+            </select>
+        </p>
+
+        <p>
+            시험 방식<br>
+            <select id="mode">
+                <option value="koen">한 → 영</option>
+                <option value="enko">영 → 한</option>
+                <option value="mix">랜덤</option>
+            </select>
+        </p>
+		<br>
+        <button class="event-card" onclick="startTest()">시험 시작</button>
+
+    </div>
+
+    <!-- 문제 영역 -->
+    <div id="quizBox" class="event-card hidden"></div>
+
+    <!-- 결과 -->
+    <div id="resultBox" class="event-card hidden"></div>
+<?php include $_SERVER['DOCUMENT_ROOT']."/footer.php"; ?>
+</div>
+
+<script src="07a_app.js"></script>
+</body>
+</html>

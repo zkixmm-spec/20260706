@@ -1,0 +1,267 @@
+:root{
+    --bg-dark: rgba(2,6,23,0.85);
+    --card-bg: rgba(15,23,42,0.9);
+    --accent:#38bdf8;
+    --text-main:#f8fafc;
+    --text-sub:#cbd5f5;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    /* font-family:"Pretendard","Segoe UI",sans-serif; */
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:var(--text-main);
+
+    background:
+        linear-gradient(var(--bg-dark),var(--bg-dark)),
+        url("../a.jpg") center/cover no-repeat;
+}
+
+.container{
+    width:100%;
+    max-width:1000px;
+    padding:24px;
+
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+}
+
+/* ==========================
+   제목
+========================== */
+
+.title-box{
+    position:relative;
+
+    text-align:center;
+    padding:40px 30px;
+
+    background:rgba(30,41,59,.85);
+    backdrop-filter:blur(8px);
+
+    border-radius:12px;
+    border:1px solid rgba(148,163,184,.15);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.6);
+}
+
+.title-box::after{
+    content:"";
+    position:absolute;
+
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%);
+
+    width:120px;
+    height:3px;
+
+    background:var(--accent);
+}
+
+.title-box h1{
+    font-size:clamp(2rem,5vw,3rem);
+    letter-spacing:-1px;
+}
+
+.title-box p{
+    margin-top:12px;
+    color:var(--text-sub);
+}
+
+/* ==========================
+   행사 카드
+========================== */
+
+.event-card{
+    position:relative;
+
+    display:block;
+
+    padding:40px 30px;
+
+    text-align:center;
+    text-decoration:none;
+
+    color:var(--text-main);
+
+    background:var(--card-bg);
+    backdrop-filter:blur(6px);
+
+    border-radius:10px;
+    border:1px solid rgba(148,163,184,.15);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.6);
+
+    transition:.3s ease;
+}
+
+.event-card::after{
+    content:"";
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:3px;
+
+    background:var(--accent);
+
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .3s ease;
+}
+
+.event-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(56,189,248,.6);
+}
+
+.event-card:hover::after{
+    transform:scaleX(1);
+}
+
+.event-card h1{
+    margin-bottom:14px;
+    font-size:clamp(1.4rem,3vw,2rem);
+}
+
+.event-card p{
+    line-height:1.6;
+    color:var(--text-sub);
+}
+
+/* ==========================
+   현재 행사
+========================== */
+
+.event-card.current{
+    background:rgba(23,42,194,.8);
+    padding:70px 40px;
+    font-size:1.2em;
+}
+
+/* ==========================
+   이전 행사
+========================== */
+
+.old-events{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.old-events .event-card{
+    padding:28px 22px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.option-btn {
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+    transform: scale(1.02);
+}
+
+select {
+    width: 100%;
+    padding: 14px 16px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(148,163,184,.2);
+
+    background: var(--card-bg);
+    color: var(--text-main);
+
+    font-size: 1rem;
+
+    /* 🔥 기본 브라우저 스타일 제거 */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* hover */
+select:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* focus */
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(56,189,248,.25);
+}
+
+/* option 스타일 (브라우저마다 제한적이지만 일부 적용됨) */
+option {
+    background: #0f172a;
+    color: var(--text-main);
+}
+
+/* select 라벨 느낌 추가 (위에 텍스트가 있으면 더 좋음) */
+label {
+    display: block;
+    margin: 8px 0 6px;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+}
+
+button {
+    width: 100%;
+    padding: 18px 16px;
+
+    border: 1px solid rgba(148,163,184,.2);
+    border-radius: 10px;
+
+    background: var(--card-bg);
+    color: var(--text-main);
+
+    font-size: 1.05rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* hover */
+button:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 40px rgba(0,0,0,.35);
+}
+
+/* 클릭 */
+button:active {
+    transform: translateY(-1px);
+}
+
+/* 포커스 제거 (깔끔하게) */
+button:focus {
+    outline: none;
+}
